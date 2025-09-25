@@ -24,7 +24,7 @@ export default function Register() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-stone-300 to-stone-100">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-stone-300 to-stone-200">
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded-lg p-6 w-96"

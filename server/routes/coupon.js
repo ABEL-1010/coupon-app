@@ -2,7 +2,7 @@
 import express from "express";
 import multer from "multer";
 import auth from "../middleware/auth.js";
-import { createCoupon, getCoupons, getCouponByCode, deleteCoupon, updateCoupon } from "../controllers/couponController.js";
+import { createCoupon, getCoupons, getCouponByCode, getCouponById, deleteCoupon, updateCoupon } from "../controllers/couponController.js";
 import authMiddleware from "../middleware/auth.js";
 
 const router = express.Router();
@@ -17,8 +17,11 @@ const upload = multer({ storage });
 // Routes
 router.post("/", auth, upload.single("image"), createCoupon);
 router.get("/", auth, getCoupons);
+
+router.get("/by-id/:id", getCouponById);
 router.get("/:code", getCouponByCode);
+
 router.delete("/:id", authMiddleware, deleteCoupon);
-router.put("/:id", updateCoupon);
+router.put("/:id", authMiddleware, upload.single("image"), updateCoupon);
 
 export default router;

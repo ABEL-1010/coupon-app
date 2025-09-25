@@ -30,7 +30,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-stone-300 to-stone-100">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-stone-400 to-stone-300">
   <div className="flex shadow-lg rounded-lg overflow-hidden">
     {/* Left side image */}
     <div

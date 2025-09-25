@@ -137,11 +137,11 @@ export default function Dashboard() {
       {/* Main Content */}
       <main className="flex-1 p-8 ml-64 pb-16 ">
       <div className="flex items-center justify-between mb-6">
-    <h1 className="text-3xl font-bold">My Coupons</h1>
+    <h1 className="text-3xl ">My Coupons</h1>
     <input
       type="text"
       placeholder="Search coupons..."
-      className="w-64 p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      className="w-64 p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50"
       value={searchQuery}
       onChange={(e) => setSearchQuery(e.target.value)}
     />
@@ -158,63 +158,80 @@ export default function Dashboard() {
             coupon.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             coupon.description.toLowerCase().includes(searchQuery.toLowerCase())
           ).slice(0, visibleCount).map((coupon) => (
-                  <div
-                  key={coupon._id}
-                  className="bg-white rounded-lg shadow p-3 flex flex-col justify-between h-56"
-                  >
-                  <div>
-                    <h2 className="text-lg font-bold mb-1">{coupon.title}</h2>
-                    <p className="text-gray-700 text-sm mb-1 truncate">
-                      {coupon.description}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      {coupon.discountType === "percent"
-                        ? `${coupon.discountValue}% off`
-                        : `$${coupon.discountValue} off`}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      Expires:{" "}
-                      {coupon.expiryDate
-                        ? new Date(coupon.expiryDate).toLocaleDateString()
-                        : "N/A"}
-                    </p>
-                  </div>
-
-                  {coupon.qr && (
-                    <img
-                      src={coupon.qr}
-                      alt="QR code"
-                      className="mt-2 w-16 h-16 self-center"
-                    />
-                  )}
-
-                  {/* Actions */}
-                  <div className="mt-3 flex justify-between items-center">
-                    {/* Edit */}
-                    <button
-                      onClick={() => navigate(`/edit-coupon/${coupon._id}`)}
-                      className="p-1.5 text-blue-600 hover:bg-blue-100 rounded"
-                    >
-                      <PencilSquareIcon className="h-5 w-5" />
-                    </button>
-
-                    {/* Delete */}
-                    <button
-                      onClick={() => handleDelete(coupon._id)}
-                      className="p-1.5 text-red-600 hover:bg-red-100 rounded"
-                    >
-                      <TrashIcon className="h-5 w-5" />
-                    </button>
-
-                    <button
-                      onClick={() => handleShare(coupon)}
-                      className="flex items-center px-2 py-1 bg-green-500 text-white text-xs rounded hover:bg-green-600"
-                    >
-                      <ShareIcon className="h-4 w-4 mr-1" />
-                      Share
-                    </button>
-                  </div>
-                 </div>
+            <div
+            key={coupon._id}
+            className="bg-white rounded-lg shadow p-4 flex flex-col justify-between h-56
+                        transform transition duration-200 hover:scale-108 hover:shadow-lg"
+          >
+            {/* Top row: text + image */}
+            <div className="flex justify-between items-start gap-3">
+              <div className="flex-1">
+                <h2 className="text-lg font-bold mb-1">{coupon.title}</h2>
+                <p className="text-gray-700 text-sm mb-1 line-clamp-2">
+                  {coupon.description}
+                </p>
+                <p className="text-xs text-gray-500">
+                  {coupon.discountType === "percent"
+                    ? `${coupon.discountValue}% off`
+                    : `$${coupon.discountValue} off`}
+                </p>
+                <p className="text-xs text-gray-500">
+                  Expires:{" "}
+                  {coupon.expiryDate
+                    ? new Date(coupon.expiryDate).toLocaleDateString()
+                    : "N/A"}
+                </p>
+              </div>
+          
+              {/* Image on the right */}
+              {coupon.imageUrl && (
+                <img
+                  src={`http://localhost:5000${coupon.imageUrl}`}
+                  alt={coupon.title}
+                  className="w-25 h-25 object-cover rounded"
+                />
+              )}
+            </div>
+          
+            {/* QR + actions */}
+            <div className="mt-3 flex justify-between items-center">
+              {coupon.qr && (
+                <img
+                  src={coupon.qr}
+                  alt="QR code"
+                  className="w-18 h-18 object-contain"
+                />
+              )}
+          
+              <div className="flex items-center gap-2">
+                {/* Edit */}
+                <button
+                  onClick={() => navigate(`/edit-coupon/${coupon._id}`)}
+                  className="p-1.5 text-blue-600 hover:bg-blue-100 rounded"
+                >
+                  <PencilSquareIcon className="h-5 w-5" />
+                </button>
+          
+                {/* Delete */}
+                <button
+                  onClick={() => handleDelete(coupon._id)}
+                  className="p-1.5 text-red-600 hover:bg-red-100 rounded"
+                >
+                  <TrashIcon className="h-5 w-5" />
+                </button>
+          
+                {/* Share */}
+                <button
+                  onClick={() => handleShare(coupon)}
+                  className="flex items-center px-2 py-1 bg-green-500 text-white text-xs rounded hover:bg-green-600"
+                >
+                  <ShareIcon className="h-4 w-4 mr-1" />
+                  Share
+                </button>
+              </div>
+            </div>
+          </div>
+          
               ))}
             </div>
 

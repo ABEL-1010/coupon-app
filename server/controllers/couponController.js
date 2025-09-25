@@ -75,12 +75,43 @@ export const deleteCoupon = async (req, res) => {
 };
 export const updateCoupon = async (req, res) => {
   try {
-    const coupon = await Coupon.findByIdAndUpdate(req.params.id, req.body, {
+    // Collect update fields
+    const updates = {
+      title: req.body.title,
+      description: req.body.description,
+      discountType: req.body.discountType,
+      discountValue: req.body.discountValue,
+      expiryDate: req.body.expiryDate,
+    };
+
+    // If a new image is uploaded
+    if (req.file) {
+      updates.imageUrl = `/uploads/${req.file.filename}`;
+    }
+
+    const coupon = await Coupon.findByIdAndUpdate(req.params.id, updates, {
       new: true,
     });
-    if (!coupon) return res.status(404).json({ message: "Coupon not found" });
+
+    if (!coupon) {
+      return res.status(404).json({ message: "Coupon not found" });
+    }
+
     res.json(coupon);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    console.error("Error updating coupon:", err);
+    res.status(400).json({ message: "Error updating coupon", error: err.message });
+  }
+};
+
+export const getCouponById = async (req, res) => {
+  try {
+    const coupon = await Coupon.findById(req.params.id);
+    if (!coupon) return res.status(404).json({ message: "Coupon not found" });
+
+    res.json(coupon);
+  } catch (err) {
+    console.error("Error fetching coupon by ID:", err.message);
+    res.status(500).json({ message: "Error fetching coupon", error: err.message });
   }
 };
