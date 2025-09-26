@@ -62,7 +62,7 @@ export default function Dashboard() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this coupon?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/coupons/${id}`, {
+      await axios.delete(`http://coupon-app-server.onrender.com/api/coupons/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCoupons(coupons.filter((c) => c._id !== id)); // update UI
@@ -193,7 +193,7 @@ export default function Dashboard() {
               )}
             </div>
           
-            {/* QR + actions */}
+            
             <div className="mt-3 flex justify-between items-center">
               {coupon.qr && (
                 <img

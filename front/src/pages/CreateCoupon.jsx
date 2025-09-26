@@ -53,7 +53,7 @@ export default function CreateCoupon() {
       if (image) formData.append("image", image);
 
       const res = await axios.post(
-        "http://localhost:5000/api/coupons",
+        "http://coupon-app-server.onrender.com/api/coupons",
         formData,
         {
           headers: {
