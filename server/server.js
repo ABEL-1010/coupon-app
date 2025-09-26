@@ -7,6 +7,8 @@ import { connectDB } from "./utils/db.js";
 import authRoutes from "./routes/auth.js";
 import couponRoutes from "./routes/coupon.js";
 
+
+
 dotenv.config();
 const app = express();
 
@@ -25,6 +27,11 @@ app.get("/", (req, res) => {
 
 // DB + Server start
 const PORT = process.env.PORT || 5000;
+const isProduction = process.env.NODE_ENV === 'production';
+
 connectDB().then(() => {
-  app.listen(PORT, () => console.log(` Server running on http://localhost:${PORT}`));
+  app.listen(PORT, '0.0.0.0', () => {
+    const url = isProduction ? `port ${PORT}` : `http://localhost:${PORT}`;
+    console.log(`Server running on ${url}`);
+  });
 });
