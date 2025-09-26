@@ -27,11 +27,6 @@ app.get("/", (req, res) => {
 
 // DB + Server start
 const PORT = process.env.PORT || 5000;
-const isProduction = process.env.NODE_ENV === 'production';
-
 connectDB().then(() => {
-  app.listen(PORT, '0.0.0.0', () => {
-    const url = isProduction ? `port ${PORT}` : `http://localhost:${PORT}`;
-    console.log(`Server running on ${url}`);
-  });
+  app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
 });
