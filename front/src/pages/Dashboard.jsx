@@ -20,7 +20,7 @@ export default function Dashboard() {
   const [coupons, setCoupons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCoupon, setSelectedCoupon] = useState(null); // for modal
-  const [visibleCount, setVisibleCount] = useState(7); // show first 7 by default
+  const [visibleCount, setVisibleCount] = useState(6); // show first 7 by default
 
   const token = localStorage.getItem("token");
   const [userName, setUserName] = useState("User");
@@ -37,7 +37,7 @@ export default function Dashboard() {
   // Fetch coupons
   const fetchCoupons = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/coupons", {
+      const res = await axios.get("http://coupon-app-server.onrender.com/api/coupons", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCoupons(res.data);
