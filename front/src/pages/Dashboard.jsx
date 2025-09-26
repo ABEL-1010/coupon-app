@@ -37,6 +37,11 @@ export default function Dashboard() {
   // Fetch coupons
   const fetchCoupons = async () => {
     try {
+
+      //these two lines have changed since the last push 
+      
+      const token = localStorage.getItem('token');
+      console.log('Token:', token);
       const res = await axios.get("https://coupon-app-server.onrender.com/api/coupons", {
         headers: { Authorization: `Bearer ${token}` },
       });

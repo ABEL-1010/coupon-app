@@ -18,10 +18,13 @@ const upload = multer({ storage });
 router.post("/", auth, upload.single("image"), createCoupon);
 router.get("/", auth, getCoupons);
 
-router.get("/by-id/:id", getCouponById);
-router.get("/:code", getCouponByCode);
+router.get("/by-id/:id",  getCouponById);
+router.get("/:code",  getCouponByCode);
 
 router.delete("/:id", authMiddleware, deleteCoupon);
 router.put("/:id", authMiddleware, upload.single("image"), updateCoupon);
 
 export default router;
+
+
+//by-id/:id  ena the /:code    add gere
