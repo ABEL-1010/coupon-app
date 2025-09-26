@@ -39,9 +39,10 @@ export default function Dashboard() {
     try {
 
       //these two lines have changed since the last push 
-      
+
       const token = localStorage.getItem('token');
       console.log('Token:', token);
+
       const res = await axios.get("https://coupon-app-server.onrender.com/api/coupons", {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -88,9 +89,9 @@ export default function Dashboard() {
   
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100 flex-col md:flex-row">
       {/* Sidebar */}
-      <aside className="w-64 bg-white fixed top-0 bottom-0 shadow-md flex flex-col justify-between">
+      <aside className="w-full md:w-64 md:relative z-10 bg-white fixed top-0 bottom-0 shadow-md flex flex-col justify-between">
         <div>
           {/* Profile */}
           <div className="p-6 border-b flex flex-col items-center">
@@ -140,17 +141,17 @@ export default function Dashboard() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8 ml-64 pb-16 ">
+      <main className="flex-1 md:ml-64 p-8 ml-64 pb-16 ">
       <div className="flex items-center justify-between mb-6">
-    <h1 className="text-3xl ">My Coupons</h1>
-    <input
+     <h1 className="text-3xl ">My Coupons</h1>
+     <input
       type="text"
       placeholder="Search coupons..."
       className="w-64 p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50"
       value={searchQuery}
       onChange={(e) => setSearchQuery(e.target.value)}
-    />
-  </div>
+     />
+     </div>
         {loading ? (
           <p>Loading coupons...</p>
         ) : coupons.length === 0 ? (

@@ -151,16 +151,16 @@ export default function Analytics() {
           <>
             {/* Stats Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white h-20 p-6 rounded-lg shadow text-center">
-                <h3 className="text-lg font-bold">Total Coupons</h3>
+              <div className="bg-white p-6 rounded-lg shadow text-center">
+                <h3 className="text-lg ">Total Coupons</h3>
                 <p className="text-2xl text-blue-600">{totalCoupons}</p>
               </div>
-              <div className="bg-white h-20 p-6 rounded-lg shadow text-center">
-                <h3 className="text-lg font-bold">Active Coupons</h3>
+              <div className="bg-white p-6 rounded-lg shadow text-center">
+                <h3 className="text-lg">Active Coupons</h3>
                 <p className="text-2xl text-green-600">{activeCoupons}</p>
               </div>
-              <div className="bg-white h-20 p-6 rounded-lg shadow text-center">
-                <h3 className="text-lg font-bold">Expired Coupons</h3>
+              <div className="bg-white p-6 rounded-lg shadow text-center">
+                <h3 className="text-lg">Expired Coupons</h3>
                 <p className="text-2xl text-red-600">{expiredCoupons}</p>
               </div>
             </div>
