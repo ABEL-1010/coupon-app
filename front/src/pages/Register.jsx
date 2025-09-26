@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { registerUser } from "../api/authAPI.js"; // adjust import if needed
 import { Link, useNavigate } from "react-router-dom";
+import companyLogo from "../assets/logg.png";
 
 export default function Register() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -24,12 +25,19 @@ export default function Register() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-stone-300 to-stone-200">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-black-700 to-stone-700">
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded-lg p-6 w-96"
       >
-        <h2 className="text-2xl font-bold mb-4 text-center">Create Account</h2>
+        <div className="flex pb-2">
+                <img
+                  src={companyLogo}
+                  alt="Company Logo"
+                  className="h-12 w-12 object-contain"
+                />
+              </div>
+              <h2 className="text-2xl font-bold mb-4 ">Welcome, create account</h2>
 
         <input
           type="text"

@@ -30,11 +30,16 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-stone-600 to-stone-400 relative overflow-hidden">
-  {/* Abstract Blobs */}
-  <div className="absolute top-10 left-10 w-72 h-72 bg-stone-500/20 rounded-full blur-xl"></div>
-  <div className="absolute bottom-20 right-20 w-96 h-96 bg-stone-300/10 rounded-full blur-xl"></div>
-  <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-stone-700/15 rounded-full blur-xl"></div>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-black-700 to-stone-700 relative overflow-hidden">
+  {/* Diagonal Lines */}
+  <div className="absolute top-0 left-0 w-full h-1 bg-stone-300/20 transform -rotate-45 origin-left"></div>
+  <div className="absolute top-20 left-0 w-full h-0.5 bg-stone-400/15 transform -rotate-30 origin-left"></div>
+  <div className="absolute bottom-10 right-0 w-full h-1 bg-stone-500/25 transform rotate-60 origin-right"></div>
+  
+  {/* Rectangles */}
+  <div className="absolute top-1/4 right-16 w-32 h-32 border-2 border-green-500 transform rotate-45"></div>
+  <div className="absolute bottom-1/3 left-20 w-24 h-24 border border-orange-700 transform -rotate-12"></div>
+
   <div className="flex shadow-lg rounded-lg overflow-hidden">
     {/* Left side image */}
     <div

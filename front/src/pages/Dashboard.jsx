@@ -143,7 +143,9 @@ export default function Dashboard() {
       {/* Main Content */}
       <main className="flex-1 p-8 ml-64 pb-16 ">
       <div className="flex items-center justify-between mb-6">
-     <h1 className="text-3xl ">My Coupons</h1>
+      <h1 className="text-4xl ">
+          My <span className="text-2xl underline decoration-green-500 decoration-4 underline-offset-6">Coupons</span>
+        </h1>
      <input
       type="text"
       placeholder="Search coupons..."
