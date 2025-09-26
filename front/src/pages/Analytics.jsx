@@ -40,7 +40,7 @@ export default function Analytics() {
   // Fetch coupons
   const fetchCoupons = async () => {
     try {
-      const res = await axios.get("http://coupon-app-server.onrender.com/api/coupons", {
+      const res = await axios.get("https://coupon-app-server.onrender.com/api/coupons", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCoupons(res.data);

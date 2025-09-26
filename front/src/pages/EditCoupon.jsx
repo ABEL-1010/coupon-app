@@ -22,7 +22,7 @@ export default function EditCoupon() {
   useEffect(() => {
     const fetchCoupon = async () => {
       try {
-        const res = await axios.get(`http://coupon-app-server.onrender.com/api/coupons/by-id/${id}`, {
+        const res = await axios.get(`https://coupon-app-server.onrender.com/api/coupons/by-id/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -38,7 +38,7 @@ export default function EditCoupon() {
         });
 
         if (imageUrl) {
-          setPreview(`http://coupon-app-server.onrender.com${imageUrl}`);
+          setPreview(`https://coupon-app-server.onrender.com${imageUrl}`);
         }
       } catch (err) {
         console.error("Error fetching coupon:", err);
@@ -77,7 +77,7 @@ export default function EditCoupon() {
         formData.append("image", form.image); // only add if user picked new image
       }
 
-      await axios.put(`http://coupon-app-server.onrender.com/api/coupons/${id}`, formData, {
+      await axios.put(`https://coupon-app-server.onrender.com/api/coupons/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
